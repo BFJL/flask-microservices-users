@@ -9,7 +9,8 @@ WORKDIR /usr/src/app
 ADD ./requirements.txt /usr/src/app/requirements.txt
 
 # 安装依赖
-RUN pip install -U -i ${PYPI_SOURCE} --trusted-host ${PYPI_SOURCE_HOST} -r requirements.txt
+RUN pip install -U -i ${PYPI_SOURCE} --trusted-host ${PYPI_SOURCE_HOST} --upgrade pip && \
+    pip install -U -i ${PYPI_SOURCE} --trusted-host ${PYPI_SOURCE_HOST} -r requirements.txt
 
 # 添加应用
 ADD . /usr/src/app
